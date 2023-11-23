@@ -21,33 +21,29 @@
     </div>
     <div class="activegames-section">
         <div class="activegames-list">
-            <div class="activegame">
+            {{#each games}}
+            <div class="activegame" id="{{this.id}}">
                 <div>
-                    <img class="activegame-flipprev" src="../img/heads.png">
-                    <img class="activegame-userpb" alt="./profiles/unset.png" src="../img/userpb.png">
-                    <b>Besmir</b>
+                    <img class="activegame-flipprev" src="../img/{{this.player1.position}}.png">
+                    <img class="activegame-userpb" src="./profiles/{{this.player1.username}}.png" onerror="loadFallbackImg(this)">
+                    <b>{{this.player1.username}}</b>
                 </div>
                 <img class="activegame-vs" src="../img/vs.png">
+                {{#if this.player2}} 
                 <div>
-                    <img class="activegame-flipprev" src="../img/heads.png">
-                    <img class="activegame-userpb" alt="./profiles/unset.png" src="../img/userpb.png">
-                    <b>Besmir</b>
+                    <img class="activegame-flipprev" src="../img/{{this.player2.position}}.png">
+                    <img class="activegame-userpb" src="./profiles/{{this.player2.username}}.png" onerror="loadFallbackImg(this)">
+                    <b>{{this.player2.username}}</b>
                 </div>
+                {{else}}
+                <div>
+                    <form method="post" action="">
+                        <button type="submit" class="creategame-btn">JOIN</button>
+                    </form>
+                </div>
+                {{/if}}
             </div>
-            <div class="activegame">
-                <div>
-                    <img class="activegame-flipprev" src="../img/heads.png">
-                    <img class="activegame-userpb" src="../img/userpb.png">
-                    <b>Besmir</b>
-                </div>
-                <img class="activegame-vs" src="../img/vs.png">
-                <div>
-                    <img class="activegame-flipprev" src="../img/heads.png">
-                    <img class="activegame-userpb" src="../img/userpb.png">
-                    <b>Besmir</b>
-                </div>
-            </div>
-
+            {{/each}}
         </div>
     </div>
 

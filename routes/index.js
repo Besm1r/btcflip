@@ -11,6 +11,7 @@ router.post('/login', controller.requestLogin);
 router.post('/register', controller.requestRegister);
 router.post("/profile", middleware.isAuthorized, controller.uploadPic)
 router.post("/creategame", middleware.isAuthorized, controller.createGame)
+router.post("/joingame/:id", middleware.isAuthorized, controller.joinGame);
 
 
 module.exports = router;    
