@@ -21,11 +21,12 @@
     </div>
     <div class="activegames-section">
         <div class="activegames-list">
+            {{#each games}}
             <div class="activegame">
                 <div>
                     <img class="activegame-flipprev" src="../img/heads.png">
                     <img class="activegame-userpb" alt="./profiles/unset.png" src="../img/userpb.png">
-                    <b>Besmir</b>
+                    <b>{{this}}</b>
                 </div>
                 <img class="activegame-vs" src="../img/vs.png">
                 <div>
@@ -34,6 +35,7 @@
                     <b>Besmir</b>
                 </div>
             </div>
+            {{/each}}
             <div class="activegame">
                 <div>
                     <img class="activegame-flipprev" src="../img/heads.png">

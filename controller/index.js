@@ -4,7 +4,8 @@ const gameService = require("../services/gameService");
 
 const renderMainPage = (req, res) => {
     res.render('main', {
-        username: req.session?.username
+        username: req.session?.username,
+        games: gameService.activeGames
     });
 }
 
@@ -65,7 +66,10 @@ const uploadPic = async (req, res) => {
 }
 
 const createGame = async (req, res) => {
-    if (!req.session.game) gameService.createGame(req, res);
+    if (!req.session.game) {
+        gameService.createGame(req, res);
+        res.redirect("/");
+    }
 } 
 
 module.exports = { renderMainPage, renderLogin, logout, renderRegister, renderuploadPic, requestLogin, requestRegister, uploadPic, createGame }
