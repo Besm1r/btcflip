@@ -1,0 +1,130 @@
+    <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+    <div class="navbar-section">
+        <div><img src="../img/image 1.png"><h1>BTCFLIP.com</h1></div>   
+        <div>
+            {{#if username}}
+            <div class="user-preview">
+                <img src="./profiles/{{username}}.png" onerror="loadFallbackImg(this)">
+                <b>{{username}}</b>
+                <a href="/logout" style="padding: 1rem;" class="creategame-btn"><i class="far fa-right-from-bracket"></i></a>
+            </div>
+            {{else}}
+            <a href="/login" class="creategame-btn">LOGIN</a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="action-section">
+        <form method="post" action="/creategame">
+            <div><input type="text" class="betamount-input" name="betamount"  placeholder="amount"></div>
+            <div><button type="submit" class="creategame-btn">CREATE GAME</button></div>
+        </form>
+    </div>
+    <div class="activegames-section">
+        <div class="activegames-list">
+            <div class="activegame">
+                <div>
+                    <img class="activegame-flipprev" src="../img/heads.png">
+                    <img class="activegame-userpb" alt="./profiles/unset.png" src="../img/userpb.png">
+                    <b>Besmir</b>
+                </div>
+                <img class="activegame-vs" src="../img/vs.png">
+                <div>
+                    <img class="activegame-flipprev" src="../img/heads.png">
+                    <img class="activegame-userpb" alt="./profiles/unset.png" src="../img/userpb.png">
+                    <b>Besmir</b>
+                </div>
+            </div>
+            <div class="activegame">
+                <div>
+                    <img class="activegame-flipprev" src="../img/heads.png">
+                    <img class="activegame-userpb" src="../img/userpb.png">
+                    <b>Besmir</b>
+                </div>
+                <img class="activegame-vs" src="../img/vs.png">
+                <div>
+                    <img class="activegame-flipprev" src="../img/heads.png">
+                    <img class="activegame-userpb" src="../img/userpb.png">
+                    <b>Besmir</b>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{#if login}}
+    <div class="login-container" id="login-container">
+        <div class="login-head">
+            <div>
+                <div class="login-headingcontainer"><h1 class="login-heading-1">BTCFLIP</h1><img src="./img/image 1.png"></div>
+                <h6 class="login-heading-2">Login</h6>
+                {{#if error}}
+                <div class="login-error">
+                    <i class="far fa-circle-exclamation"></i>
+                    <a>{{error}}</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="login-body">
+            <form action="/login" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="password" placeholder="Password">
+                <button type="submit">submit</button>
+                <a href="/register">still no Account? create one here</a>
+            </form>
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if register}}
+    <div class="login-container" id="login-container">
+        <div class="login-head">
+            <div>
+                <div class="login-headingcontainer"><h1 class="login-heading-1">BTCFLIP</h1><img src="./img/image 1.png"></div>
+                <h6 class="login-heading-2">Registration</h6>
+                {{#if error}}
+                <div class="login-error">
+                    <i class="far fa-circle-exclamation"></i>
+                    <a>{{error}}</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="login-body">
+            <form action="/register" method="post">
+                <input type="text" name="email" placeholder="E-Mail">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="password" placeholder="Password">
+                <button type="submit">submit</button>
+                <a href="/login">already got an Account? Login here</a>
+            </form>
+        </div>
+    </div>
+    {{/if}}
+    
+    {{#if upload}}
+    <div class="login-container" id="upload-container">
+        <div class="login-head">
+            <div>
+                <div class="login-headingcontainer"><h1 class="login-heading-1">BTCFLIP</h1><img src="./img/image 1.png"></div>
+                <h6 class="login-heading-2">Set your profile picture</h6>
+                {{#if error}}
+                <div class="login-error">
+                    <i class="far fa-circle-exclamation"></i>
+                    <a>{{error}}</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="login-body">
+            <form action="/profile" method="POST" enctype="multipart/form-data">
+                <input style="display: none;" type="file" class="popup-upload" id="popup-upload" name="image"/>
+                <label class="popup-upload" for="popup-upload">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    <b>Drag in your desired profile picture</b>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+    {{/if}}
