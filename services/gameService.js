@@ -3,8 +3,6 @@ const Game = require("../classes/game");
 
 activeGames = [];
  
-
-
 const createGame = async (req, res) => {
     let gameid = Math.max(...a.map(o => o.y), 1);
     let player1 = new Player(req.session.username, 0, 1000);

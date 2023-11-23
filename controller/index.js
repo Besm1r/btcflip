@@ -4,7 +4,8 @@ const gameService = require("../services/gameService");
 
 const renderMainPage = (req, res) => {
     res.render('main', {
-        username: req.session?.username
+        username: req.session?.username,
+        games: gameService.activeGames
     });
 }
 
